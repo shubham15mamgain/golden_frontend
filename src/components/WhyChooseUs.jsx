@@ -1,8 +1,9 @@
 import React from "react";
 
+// Gradinet   bg-gradient-to-r from-blue-500 to-indigo-600
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+    <section className="py-20 bg-black text-white">
       <div className="container mx-auto px-6 text-center">
         {/* Tagline */}
         <h2 className="text-3xl md:text-4xl font-bold mb-8">

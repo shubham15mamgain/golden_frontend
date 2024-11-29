@@ -93,7 +93,7 @@ const HeroSection = () => {
       className="relative text-white py-20"
       style={{
         backgroundImage:
-          "url('https://png.pngtree.com/background/20230416/original/pngtree-website-technology-line-dark-background-picture-image_2443641.jpg')",
+          "url('https://media.istockphoto.com/id/995966976/photo/they-bring-accuracy-and-expertise-into-every-procedure.jpg?s=612x612&w=0&k=20&c=l-J5YF7bDB67Fhn6D4hjm-i-B0DeCgLHmL7vdPrvkJM=')",
         minHeight: "400px",
         backgroundSize: "cover",
         backgroundPosition: "center",

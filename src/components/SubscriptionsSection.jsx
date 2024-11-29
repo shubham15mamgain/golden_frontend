@@ -1,7 +1,12 @@
-import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import gsap from "gsap";
+import axios from "axios";
+import LoadingIndicator from "./LoadingIndicator";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const RAZORPAY_KEY_ID = import.meta.env.VITE_APP_RAZORPAY_KEY_ID;
 
 const cards = [
   {
@@ -31,6 +36,10 @@ const cards = [
 const SubscriptionSection = () => {
   const cardsRef = useRef([]);
 
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     gsap.from(cardsRef.current, {
       opacity: 1,
@@ -39,8 +48,82 @@ const SubscriptionSection = () => {
     });
   }, []);
 
+  const handlePayment = async ({ price, title, name }) => {
+    setLoading(true);
+    try {
+      // Step 1: Create order on the backend
+      const response = await axios.post("http://localhost:5000/bookings", {
+        totalPrice: +price,
+        title: title,
+        name: name,
+      });
+      console.log(`response:: ${JSON.stringify(response, null, 2)}`);
+
+      const { order } = response.data;
+
+      // Step 2: Set up Razorpay options
+      const options = {
+        key: RAZORPAY_KEY_ID,
+        amount: order.amount,
+        currency: "INR",
+        name: name,
+        description: `Payment for ${title}`,
+        order_id: order.id,
+        handler: async function (response) {
+          try {
+            const verifyPayment = await axios.post(
+              "http://localhost:5000/bookings/verify-payment",
+              response
+            );
+            if (verifyPayment?.data?.success === true) {
+              toast.success("🦄Payment Successfull");
+              setTimeout(() => {
+                navigate("/");
+              }, 400);
+            }
+          } catch (error) {
+            console.log("ERR: ", error);
+            if (error.response && error.response.status === 404) {
+              // alert("Verification route not found. Please contact support.");
+              toast.error(
+                "🦄Verification route not found. Please contact support"
+              );
+            } else {
+              // alert("Payment verification failed. Please try again.");
+              toast.error("🦄Payment verification failed. Please try again");
+            }
+            console.error("Error in payment verification:", error);
+          }
+        },
+        prefill: {
+          name: "Shubham Mamgain",
+          email: "shubhammamgain@pearlorganisation.com",
+          contact: "9012761860",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+        modal: {
+          ondismiss: function () {
+            alert("Payment cancelled");
+          },
+        },
+      };
+
+      // Step 4: Open Razorpay checkout
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+    } catch (error) {
+      console.error("Error in payment process:", error);
+      alert("Error occurred during payment. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  //  Gradient Background    bg-gradient-to-r from-purple-500 to-green-500
+
   return (
-    <section className="bg-gradient-to-r from-purple-500 to-green-500 text-white py-20">
+    <section className="bg-black text-white py-20">
       <div className="container mx-auto px-6 text-center">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-6"
@@ -91,12 +174,13 @@ const SubscriptionSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.3 }}
               >
-                <Link
-                  to={`/payment/inr${card.price}`}
+                <button
+                  onClick={() => handlePayment(card)}
+                  disabled={loading}
                   className="bg-yellow-400  text-blue-900 py-3 px-6 rounded-full text-lg font-semibold hover:bg-yellow-500 transition duration-300"
                 >
-                  Pay Now
-                </Link>
+                  {loading ? <LoadingIndicator /> : "Pay Now"}
+                </button>
               </motion.div>
             </motion.div>
           ))}
