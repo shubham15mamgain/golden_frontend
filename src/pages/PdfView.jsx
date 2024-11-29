@@ -17,23 +17,23 @@ const PdfView = () => {
 
   const modalRef = useRef(null);
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      setKeyboard(true);
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     setKeyboard(true);
 
-      if (showModal) {
-        console.log(showModal, "show modal value");
-        alert("hello");
-        event.preventDefault();
-      }
-    };
+  //     if (showModal) {
+  //       console.log(showModal, "show modal value");
+  //       alert("hello");
+  //       event.preventDefault();
+  //     }
+  //   };
 
-    window.addEventListener("keydown", handleKeyDown, true);
+  //   window.addEventListener("keydown", handleKeyDown, true);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown, true);
-    };
-  }, [showModal]);
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown, true);
+  //   };
+  // }, [showModal]);
 
   const pdfs = [
     {
@@ -101,17 +101,17 @@ const PdfView = () => {
     closePurchaseAllModal();
   };
 
-  useEffect(() => {
-    if (showModal) {
-      document.body.classList.add("no-interaction");
-    } else {
-      document.body.classList.remove("no-interaction");
-    }
+  // useEffect(() => {
+  //   if (showModal) {
+  //     document.body.classList.add("no-interaction");
+  //   } else {
+  //     document.body.classList.remove("no-interaction");
+  //   }
 
-    return () => {
-      document.body.classList.remove("no-interaction");
-    };
-  }, [showModal]);
+  //   return () => {
+  //     document.body.classList.remove("no-interaction");
+  //   };
+  // }, [showModal]);
 
   //   useEffect(() => {
   //     const handleKeyDown = (event) => {
@@ -141,77 +141,77 @@ const PdfView = () => {
   //     };
   //   }, []);
 
-  useEffect(() => {
-    const detectDevTools = () => {
-      const threshold = 160; // Height threshold for detecting dev tools
-      const isDevToolsOpen =
-        window.outerHeight - window.innerHeight > threshold ||
-        window.outerWidth - window.innerWidth > threshold;
+  // useEffect(() => {
+  //   const detectDevTools = () => {
+  //     const threshold = 160; // Height threshold for detecting dev tools
+  //     const isDevToolsOpen =
+  //       window.outerHeight - window.innerHeight > threshold ||
+  //       window.outerWidth - window.innerWidth > threshold;
 
-      if (isDevToolsOpen) {
-        setDevToolsModal(true);
-      } else {
-        setDevToolsModal(false);
-      }
-    };
+  //     if (isDevToolsOpen) {
+  //       setDevToolsModal(true);
+  //     } else {
+  //       setDevToolsModal(false);
+  //     }
+  //   };
 
-    window.addEventListener("resize", detectDevTools);
-    detectDevTools();
+  //   window.addEventListener("resize", detectDevTools);
+  //   detectDevTools();
 
-    return () => {
-      window.removeEventListener("resize", detectDevTools);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", detectDevTools);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    const handleKeyUp = (event) => {
-      if (event.key === "PrintScreen") {
-        alert(
-          "Warning : SCREENSHOT was captured. One More SCREENSHOT and your subscription will end abruptly."
-        );
+  // useEffect(() => {
+  //   const handleKeyUp = (event) => {
+  //     if (event.key === "PrintScreen") {
+  //       alert(
+  //         "Warning : SCREENSHOT was captured. One More SCREENSHOT and your subscription will end abruptly."
+  //       );
 
-        document.body.style.filter = "blur(100px)";
-        navigator.clipboard.writeText("");
-        alert("Screenshot detected. Blurring content.");
+  //       document.body.style.filter = "blur(100px)";
+  //       navigator.clipboard.writeText("");
+  //       alert("Screenshot detected. Blurring content.");
 
-        setTimeout(() => {
-          document.body.style.filter = "none";
-        }, 2000);
+  //       setTimeout(() => {
+  //         document.body.style.filter = "none";
+  //       }, 2000);
 
-        alert("Screenshots are disabled.");
+  //       alert("Screenshots are disabled.");
 
-        navigate("/login");
-      }
-    };
+  //       navigate("/login");
+  //     }
+  //   };
 
-    window.addEventListener("keyup", handleKeyUp);
+  //   window.addEventListener("keyup", handleKeyUp);
 
-    return () => {
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("keyup", handleKeyUp);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    const disableContextMenu = (e) => e.preventDefault();
-    document.addEventListener("contextmenu", disableContextMenu);
+  // useEffect(() => {
+  //   const disableContextMenu = (e) => e.preventDefault();
+  //   document.addEventListener("contextmenu", disableContextMenu);
 
-    const disableDevToolsKeys = (e) => {
-      if (
-        e.keyCode === 123 || // F12
-        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I/J
-        (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
-        e.key === "PrintScreen" // PrintScreen
-      ) {
-        e.preventDefault();
-      }
-    };
-    document.addEventListener("keydown", disableDevToolsKeys);
+  //   const disableDevToolsKeys = (e) => {
+  //     if (
+  //       e.keyCode === 123 || // F12
+  //       (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || // Ctrl+Shift+I/J
+  //       (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+  //       e.key === "PrintScreen" // PrintScreen
+  //     ) {
+  //       e.preventDefault();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", disableDevToolsKeys);
 
-    return () => {
-      document.removeEventListener("contextmenu", disableContextMenu);
-      document.removeEventListener("keydown", disableDevToolsKeys);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("contextmenu", disableContextMenu);
+  //     document.removeEventListener("keydown", disableDevToolsKeys);
+  //   };
+  // }, []);
 
   return (
     <div className="px-10 py-10">
