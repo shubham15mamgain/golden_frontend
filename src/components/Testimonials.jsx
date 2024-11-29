@@ -154,15 +154,16 @@ const testimonialsGroup2 = [
 const Testimonials = () => {
   useEffect(() => {
     gsap.to(".group-1", {
-      x: "100%",
+      x: "-100%",
       repeat: -1,
       duration: 12,
       ease: "linear",
     });
 
     gsap.to(".group-2", {
-      x: "-100%",
+      x: "100%",
       repeat: -1,
+
       duration: 12,
       ease: "linear",
     });
