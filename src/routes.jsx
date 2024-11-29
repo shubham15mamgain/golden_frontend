@@ -5,6 +5,7 @@ import PdfView from "./pages/PdfView";
 import Login from "./pages/Login";
 import FeaturesPage from "./pages/featurePage";
 import PricingPage from "./pages/PricingPage";
+import AboutUs from "./pages/AboutUs";
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const routes = createBrowserRouter([
     path:'/pricing',
     element:<PricingPage/>
   }
+,  {
+  path:'/aboutus',
+  element:<AboutUs/>
+}
 
 
 ]);
