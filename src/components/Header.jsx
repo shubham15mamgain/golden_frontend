@@ -60,7 +60,7 @@ const Header = () => {
   const onLoginSubmit = async (data) => {
     setIsLoggingIn(true);
     console.log("Login Data:", data);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     setIsLoggingIn(false);
     closeLoginModal();
   };
@@ -68,7 +68,7 @@ const Header = () => {
   const onSignupSubmit = async (data) => {
     setIsSigningUp(true);
     console.log("Signup Data:", data);
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate API call
     setIsSigningUp(false);
     closeSignupModal();
   };

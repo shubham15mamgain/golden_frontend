@@ -4,6 +4,8 @@ import HeroSection from "../components/HeroSection";
 import WhyChooseUs from "../components/WhyChooseUs";
 import SubscriptionSection from "../components/SubscriptionsSection";
 import FreePDFsSection from "../components/FreePDFs";
+import Testimonials from "../components/Testimonials";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -13,6 +15,9 @@ const Home = () => {
       <WhyChooseUs />
       <SubscriptionSection />
       <FreePDFsSection />
+      <Testimonials />
+
+      <Footer />
     </div>
   );
 };

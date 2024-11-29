@@ -93,7 +93,7 @@ const HeroSection = () => {
       className="relative text-white py-20"
       style={{
         backgroundImage:
-          "url('https://www.shutterstock.com/image-photo/maski-india-26may-2019-neet-260nw-1407723131.jpg')",
+          "url('https://png.pngtree.com/background/20230416/original/pngtree-website-technology-line-dark-background-picture-image_2443641.jpg')",
         minHeight: "400px",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -129,7 +129,7 @@ const HeroSection = () => {
 
         <Link
           to="/pricing-faq"
-          className="bg-transparent border-2 border-white py-3 px-6 rounded-full text-lg font-semibold text-white hover:bg-white hover:text-blue-900 transition duration-300"
+          className="bg-red-600  py-3 px-6 rounded-full text-lg font-semibold text-white hover:bg-white hover:text-blue-900 transition duration-300"
         >
           Subscribe Now
         </Link>
