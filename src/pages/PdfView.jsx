@@ -39,19 +39,20 @@ const PdfView = () => {
     {
       id: 1,
       name: "Sample PDF",
-      url: "https://res.cloudinary.com/dapjyizvj/raw/upload/v1731996423/Bazar91/zxfwyverrsb4fc5qhrpw.pdf",
+      url: "https://digify.com/a/#/f/s/c0b1a2b66fe648bb93d2890da868de64",
       isFree: true,
     },
     {
       id: 2,
       name: "Premium PDF 1",
-      url: "https://res.cloudinary.com/dapjyizvj/raw/upload/v1731920199/uploads/dqps2hqe9atxgkbs2ize.pdf",
-      isFree: false,
+      url: "https://digify.com/a/#/f/s/00e4733eead64b5ea0be300712318477",
+      isFree: true,
     },
+
     {
       id: 3,
       name: "Premium PDF 2",
-      url: "https://res.cloudinary.com/dapjyizvj/raw/upload/v1731753502/Bazar91/rkri8xhijkaftq4lckrm.pdf",
+      url: "https://digify.com/a/#/f/s/a93992524a7849f2863b26964f8721f5",
       isFree: false,
     },
   ];
@@ -239,12 +240,14 @@ const PdfView = () => {
           >
             <h2 className="text-lg font-semibold mb-2">{pdf.name}</h2>
             {unlocked[index] ? (
-              <button
-                onClick={() => openModal(index)}
+              <a
+                href={pdf.url}
+                target="_blank"
+                // onClick={() => openModal(index)}
                 className="text-blue-500 underline"
               >
                 View PDF
-              </button>
+              </a>
             ) : (
               <button
                 disabled
@@ -277,13 +280,19 @@ const PdfView = () => {
                     {pdfs[selectedPdfIndex].name}
                   </h2>
 
-                  <iframe
-                    src={`https://docs.google.com/gview?url=${pdfs[selectedPdfIndex].url}&embedded=true`}
+                  {/* <iframe
+                    // src={`https://docs.google.com/gview?url=${pdfs[selectedPdfIndex].url}&embedded=true`}
+                    // src={pdfs[selectedPdfIndex].url}
+                    src="https://digify.com/a/#/f/s/c0b1a2b66fe648bb93d2890da868de64"
                     title="PDF Viewer"
                     className="w-full h-[70vh] border"
-                    sandbox="allow-scripts allow-same-origin"
+                    sandbox="allow-scripts allow-cross-origin"
                     style={{ overflowY: "scroll" }}
-                  ></iframe>
+                  ></iframe> */}
+
+                  <a href={pdfs[selectedPdfIndex].url} target="_blank">
+                    Link
+                  </a>
 
                   <button
                     onClick={closeModal}

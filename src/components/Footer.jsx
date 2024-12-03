@@ -40,11 +40,6 @@ const Footer = () => {
                 </svg>
                 GOLDEN
               </a>
-              <p className="text-lg font-bold">
-                “We’ve helped 5000+ aspirants by making preparation simpler. Our
-                notes save time, remove the useless, and focus on what truly
-                matters. This year, they’re even better.”
-              </p>
 
               <h1 className="mt-12 text-xl font-bold">Contact Info </h1>
 
