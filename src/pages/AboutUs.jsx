@@ -24,7 +24,7 @@ const AboutUs = () => {
             as="p"
             letterAnime={true}
             text="Welcome to Golden Med Notes, your trusted partner in mastering medical concepts efficiently and effectively. We understand the challenges of navigating complex medical knowledge, and we’re here to simplify your learning journey with expertly crafted resources that save time while maximizing retention."
-            classname="text-xl w-3/5 mx-auto leading-5"
+            classname="text-xl w-3/5 mx-auto leading-8 lowercase"
             variants={{
               hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
               visible: {
@@ -72,7 +72,7 @@ const AboutUs = () => {
             direction="left"
             letterAnime={true}
             text=" To be the premier resource for medical students and professionals, fostering a community where learning meets excellence through innovative tools and techniques, including memory-boosting strategies."
-            classname="text-xl w-3/5 leading-5"
+            classname="text-xl w-3/5 leading-8 lowercase"
             variants={{
               hidden: { filter: "blur(4px)", opacity: 0, y: 20 },
               visible: {
