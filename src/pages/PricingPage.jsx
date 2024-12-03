@@ -107,7 +107,6 @@ const FAQ = ({ question, answer }) => {
   return (
     <div
       className="bg-orange-300 p-6 shadow-lg rounded-lg transition duration-300"
-      // onClick={() => setIsOpen(!isOpen)}
       onClick={toggleFAQ}
     >
       <div className="flex justify-between items-center cursor-pointer">
@@ -122,10 +121,6 @@ const FAQ = ({ question, answer }) => {
       </div>
       <div
         ref={contentRef}
-        // className={`mt-4 overflow-hidden transition-[max-height] duration-300 ${
-        //   isOpen ? "max-h-40" : "max-h-0"
-        // }`}
-
         style={{ height: 0, overflow: "hidden" }}
         className="mt-4 transition-all"
       >

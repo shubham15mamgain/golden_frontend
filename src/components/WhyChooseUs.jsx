@@ -1,4 +1,5 @@
 import React from "react";
+import { RandomizedTextEffect } from "./RandomisedText";
 
 // Gradinet   bg-gradient-to-r from-blue-500 to-indigo-600
 const WhyChooseUs = () => {
@@ -7,7 +8,9 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-6 text-center">
         {/* Tagline */}
         <h2 className="text-3xl md:text-4xl font-bold mb-8">
-          Save Time, Work Smart, and Ace NEET PG.
+          <RandomizedTextEffect
+            text={"Save Time, Work Smart, and Ace NEET PG."}
+          />
         </h2>
 
         {/* Benefits List */}

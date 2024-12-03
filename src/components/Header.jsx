@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import LoadingIndicator from "./LoadingIndicator";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -73,12 +74,40 @@ const Header = () => {
     closeSignupModal();
   };
 
+  const pages = [
+    {
+      id: 1,
+      name: "Home",
+      path: "/",
+    },
+    {
+      id: 2,
+      name: "Features",
+      path: "/features",
+    },
+    {
+      id: 3,
+      name: "Pricing/FAQ",
+      path: "/pricing",
+    },
+    {
+      id: 4,
+      name: "About Us",
+      path: "/about",
+    },
+  ];
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <nav className="flex items-center justify-between px-6 py-4">
+      <nav className="flex items-center justify-between px-6 py-0">
         {/* Logo */}
-        <div className="text-2xl font-bold text-yellow-600">Golden </div>
+        <Link to={`/`} className="flex flex-col gap-0 mt-0 pt-0">
+          <h1 className="text-2xl font-bold text-yellow-600 mt-0 pt-0">
+            Golden
+          </h1>
 
+          <h1 className="text-sm font-bold mt-0">Med Notes</h1>
+        </Link>
         {/* Hamburger Icon */}
         <div className="md:hidden">
           <button
@@ -112,24 +141,22 @@ const Header = () => {
             isMobileMenuOpen ? "block" : "hidden"
           }`}
         >
-          {["Home", "Features", "Notes", "Pricing/FAQ", "About Us"].map(
-            (item) => (
-              <motion.li
-                key={item}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="border-b md:border-none"
+          {pages.map((item) => (
+            <motion.li
+              key={item.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className="border-b md:border-none"
+            >
+              <Link
+                to={`${item.path}`}
+                className="block md:inline px-6 py-2 text-gray-700 hover:text-blue-600"
               >
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="block md:inline px-6 py-2 text-gray-700 hover:text-blue-600"
-                >
-                  {item}
-                </a>
-              </motion.li>
-            )
-          )}
+                {item.name}
+              </Link>
+            </motion.li>
+          ))}
         </ul>
 
         {/* Right Section */}

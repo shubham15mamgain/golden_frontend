@@ -6,6 +6,7 @@ import axios from "axios";
 import LoadingIndicator from "./LoadingIndicator";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PricingPlans from "../pages/PricingPlan";
 const RAZORPAY_KEY_ID = import.meta.env.VITE_APP_RAZORPAY_KEY_ID;
 
 const cards = [
@@ -186,6 +187,8 @@ const SubscriptionSection = () => {
           ))}
         </div>
       </div>
+
+      {/* <PricingPlans /> */}
     </section>
   );
 };
