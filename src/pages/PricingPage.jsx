@@ -3,6 +3,34 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 
 const PricingPage = () => {
+  
+    const pricingPlan= [
+      {
+        "planName": "NEET PG Guidance",
+        "duration": "Monthly",
+        "price": "INR 149",
+        "paymentLink": "/payment-page"
+      },
+      {
+        "planName": "Golden Med Notes",
+        "duration": "Monthly",
+        "price": "INR 399",
+        "paymentLink": "/golden-med-notes-payment"
+      },
+      {
+        "planName": "Golden Med Notes",
+        "duration": "6 Months",
+        "price": "INR 1499",
+        "paymentLink": "/golden-med-notes-payment"
+      },
+      {
+        "planName": "Golden Med Notes",
+        "duration": "6 Months",
+        "price": "INR 1499",
+        "paymentLink": "/golden-med-notes-payment"
+      }
+    ]
+
   return (
     <div className="max-w-7xl mx-auto p-6">
       <header className="text-center mb-12">
@@ -12,89 +40,33 @@ const PricingPage = () => {
         </p>
       </header>
 
-      <div className="overflow-x-auto shadow-lg rounded-lg">
-        <div className="overflow-x-auto">
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border-collapse table-auto">
-              <thead className="bg-gray-200">
-                <tr>
-                  <th className="px-6 py-3 border-b text-lg font-semibold text-gray-700 w-1/4 text-center">
-                    Plan Name
-                  </th>
-                  <th className="px-6 py-3 border-b text-lg font-semibold text-gray-700 w-1/4 text-center">
-                    Duration
-                  </th>
-                  <th className="px-6 py-3 border-b text-lg font-semibold text-gray-700 w-1/4 text-center">
-                    Price
-                  </th>
-                  <th className="px-6 py-3 border-b text-lg font-semibold text-gray-700 w-1/4 text-center">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    NEET PG Guidance
-                  </td>
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    Monthly
-                  </td>
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    INR 149
-                  </td>
-                  <td className="px-6 py-4 border-b text-center">
-                    <a
-                      href="/payment-page"
-                      className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-all duration-300"
-                    >
-                      Pay Now
-                    </a>
-                  </td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    Golden Med Notes
-                  </td>
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    Monthly
-                  </td>
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    INR 399
-                  </td>
-                  <td className="px-6 py-4 border-b text-center">
-                    <a
-                      href="/golden-med-notes-payment"
-                      className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-all duration-300"
-                    >
-                      Pay Now
-                    </a>
-                  </td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    Golden Med Notes
-                  </td>
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    6 Months
-                  </td>
-                  <td className="px-6 py-4 border-b text-gray-800 text-center">
-                    INR 1499
-                  </td>
-                  <td className="px-6 py-4 border-b text-center">
-                    <a
-                      href="/golden-med-notes-payment"
-                      className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-all duration-300 text-nowrap"
-                    >
-                      Pay Now
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+
+      <div className="flex gap-10  justify-center mx-auto ">
+  {pricingPlan.map((item, i) => (
+    <div key={i} className="flex  flex-col md:flex-row gap-10 items-center ">
+      <div className="border rounded-lg ring-2 ring-[#4F46E5] p-8 w-[250px] h-[350px] ">
+      <div className="text-2xl font-bold text-[#111827] mb-4">{item.price}</div>        <div className="text-lg font-semibold mb-2">{item.duration}</div>
+        <div className="text-xl font-bold text-[#4B5563] mb-2">{item.planName}</div>
+      
+        <div className="ring-1 bg-[#4F46E5] mt-10 text-center rounded-md px-2 py-2">
+          <a
+            href={item.paymentLink}
+            className="text-white text-center hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Make Payment
+          </a>
         </div>
       </div>
+    </div>
+  ))}
+</div>
+
+
+
+
+   
 
       <section className="mt-16">
         <h2 className="text-3xl font-semibold text-gray-800 text-center mb-8">

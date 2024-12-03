@@ -33,6 +33,10 @@ const routes = createBrowserRouter([
     path: "/pricing",
     element: <PricingPage />,
   },
+  {
+    path:"/aboutus",
+    element: <AboutUs/>
+  }
 ]);
 
 export default routes;
